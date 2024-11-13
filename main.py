@@ -591,7 +591,7 @@ async def main(incode):
         reCaptcha_url = Init['url'] + '&redirect_uri=https%3A%2F%2Fmypikpak.com%2Floading&state=getcaptcha' + str(round(time.time() * 1000))
         print('请复制网址到浏览器进行谷歌验证：')
         print(reCaptcha_url)
-        captcha_url = urlparse(input('请复制通过验证后的网址在此处：'))
+        captcha_url = urlparse(input('请复制通过验证后的网址在此处：https://mypikpak.com/loading?state=getcaptcha1731467731977&captcha_token=ck0.6Ak2D4LRBxLwV4NurLOV0bpCN6RHJraEwcrMbyb-j6pL4uqiB2DP5FJo-OIxvwcHKexP6ym1p5LJnwGurM1uMB25gnxNaXuS00hYRfQ5LpN1HdrOcE4PrPaexjmzztmVKj-9UaYStHCrK3GTc6SuaRGE_Ez6MLSCVn1yqrR-aBr1fzNLz_BqD-GE7FCmwqPhxTdaHf_UJdmjf9p4_fmizCLstD14QIlpdv-4d6Csz4Ist3uUI1mgIraCXzWU06A3HufpilMHjAKMjR0vQd5-a7qus2UVED9AxQNCPp63fDYSeOAxEykmcTFuAje7gtXqM0xo16JeHSANmx-CAODL_UGDLBB7jMgOWpAjSvsQQSRUZ47b8aPrUhcDqgAStMsyLS6KX9jMD5lujhHWcNM0Ag&expires_in=468'))
         # captcha_token_info = await get_new_token(captcha_url, xid, Init['captcha_token'])
         captcha_token = parse_qs(captcha_url.query).get('captcha_token', [''])[0]
         verification_id = await verification(captcha_token, xid, mail)
